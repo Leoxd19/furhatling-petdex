@@ -6,14 +6,14 @@
 
 Furhatling is a tiny desktop companion pet for [Petdex](https://petdex.dev/) and Codex Desktop. It is inspired by cozy tabletop social robots: a smooth white head, warm projected expression, short matte-grey neck, and curious little movements while your local coding agents work.
 
-The package is intentionally simple. Furhatling does not include agent logic, telemetry, network code, or a background service. It is just:
+This repository ships only the pet package. Furhatling does not include agent logic, telemetry, network code, or a background service. The runtime behavior comes from Petdex and Codex Desktop.
+
+Runtime files:
 
 ```text
 pet.json
 spritesheet.webp
 ```
-
-Petdex and Codex Desktop handle the event routing, sprite playback, and floating window.
 
 ## Preview
 
@@ -35,7 +35,16 @@ Visual experiments and side-by-side comparisons are documented in [docs/version-
 
 Furhatling's assets are platform-neutral, but the floating desktop pet experience depends on Petdex Desktop support for your operating system. Check the [Petdex download page](https://petdex.dev/download) for current platform availability.
 
-## Quick Start
+## Install
+
+Install Furhatling into the Petdex pet folder, the Codex Desktop pet folder, or both:
+
+- `~/.petdex/pets/furhatling` is used by the floating Petdex Desktop pet.
+- `~/.codex/pets/furhatling` is used by Codex Desktop's custom pet picker.
+
+If you only use one of those apps, you only need to copy the files into that app's folder.
+
+From Git:
 
 ```bash
 npx petdex@latest init
@@ -50,15 +59,15 @@ npx petdex@latest up
 open "petdex://furhatling"
 ```
 
-After that, Furhatling should be available in Petdex. To also use it as the selected Codex Desktop avatar:
+The final `open` command is for macOS. You can also switch pets from the Petdex right-click picker.
+
+To use Furhatling as the selected Codex Desktop avatar:
 
 ```text
 Codex Settings -> Appearance -> Pets -> Furhatling
 ```
 
-## Install From A Release Zip
-
-If you downloaded a release zip instead of cloning the repository:
+From a release zip:
 
 ```bash
 unzip furhatling-petdex-v0.1.0.zip
@@ -68,11 +77,6 @@ mkdir -p "$HOME/.petdex/pets/furhatling" "$HOME/.codex/pets/furhatling"
 cp pet.json spritesheet.webp "$HOME/.petdex/pets/furhatling/"
 cp pet.json spritesheet.webp "$HOME/.codex/pets/furhatling/"
 ```
-
-Why two locations:
-
-- `~/.petdex/pets` is used by the floating Petdex Desktop pet.
-- `~/.codex/pets` is used by Codex Desktop's custom pet picker.
 
 ## Use It
 
@@ -90,7 +94,7 @@ open "petdex://furhatling"
 
 You can also right-click the Petdex pet and select `furhatling` from the picker.
 
-## Daily Commands
+Useful Petdex commands:
 
 ```bash
 npx petdex@latest up
@@ -124,18 +128,20 @@ Furhatling uses the standard Codex/Petdex pet atlas format: 8 columns by 9 rows.
 - `running`: active work / tool execution
 - `review`: focused review or checking state
 
-## Files
+## Repository Layout
 
 ```text
 pet.json
 spritesheet.webp
 previews/
 docs/contact-sheet.png
+docs/version-history/
+docs/public-release-checklist.md
 LICENSE.md
 CHANGELOG.md
 ```
 
-Only these files are required at runtime:
+Only these files are required to install the pet:
 
 ```text
 pet.json
