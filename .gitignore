@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+*.log
+dist/
+work/
+outputs/
+references/
+*.zip
+*-jobs.json
+*_request.json
+*-summary.json
+*-review.json
+*-validation.json
