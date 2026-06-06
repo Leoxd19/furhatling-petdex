@@ -2,11 +2,39 @@
 
 ![Furhatling idle preview](previews/idle.gif)
 
-> **Status: alpha (v0.1).** Fixed-size sprite, fixed face, idle + 8 reaction states. See [Roadmap](#roadmap) for what's coming.
+> **Status: alpha v0.1.0.** Furhatling is usable today as a fixed-size Petdex/Codex pet. The current release uses one fixed face, one fixed spritesheet, and the standard 9-state pet atlas.
 
-Furhatling is a desktop companion pet for [Petdex](https://petdex.crafter.run/) and [Codex Desktop](https://openai.com/codex/), inspired by the Furhat social robot from [Furhat Robotics](https://furhatrobotics.com/). It sits as a small floating mascot on macOS and reacts to local agent activity from Codex and Claude Code — idling calmly between tasks, animating while work is running, gesturing on completion, blinking through review and failure states.
+Furhatling is a tiny desktop companion pet for [Petdex](https://petdex.crafter.run/) and Codex Desktop. It is inspired by cozy tabletop social robots: a smooth white head, warm projected expression, short matte-grey neck, and curious little movements while your local coding agents work.
 
-The pet itself is just a manifest (`pet.json`) and a single animated `spritesheet.webp`. No agent logic lives in the pet — it's a thin ambient UI layer over Petdex's status events.
+The package is intentionally simple. Furhatling does not include agent logic, telemetry, network code, or a background service. It is just:
+
+```text
+pet.json
+spritesheet.webp
+```
+
+Petdex and Codex Desktop handle the event routing, sprite playback, and floating window.
+
+## Preview
+
+| Idle | Running | Waiting | Review | Failed |
+| --- | --- | --- | --- | --- |
+| ![Idle](previews/idle.gif) | ![Running](previews/running.gif) | ![Waiting](previews/waiting.gif) | ![Review](previews/review.gif) | ![Failed](previews/failed.gif) |
+
+Full contact sheet:
+
+![Furhatling contact sheet](docs/contact-sheet.png)
+
+Visual experiments and side-by-side comparisons are documented in [docs/version-history](docs/version-history/README.md).
+
+## Requirements
+
+- macOS
+- Node.js / `npx`
+- Petdex Desktop
+- Optional: Codex Desktop, Codex CLI, Claude Code, Gemini CLI, or OpenCode with Petdex hooks installed
+
+The [Petdex download page](https://petdex.crafter.run/download) currently lists macOS as available, with Linux and Windows marked as coming soon. Furhatling's assets are platform-neutral, but the floating desktop pet experience depends on Petdex Desktop support for your operating system.
 
 ## Quick Start
 
@@ -23,83 +51,21 @@ npx petdex@latest up
 open "petdex://furhatling"
 ```
 
-After that, Furhatling should be available in Petdex. To also use it as the selected Codex Desktop avatar, open:
+After that, Furhatling should be available in Petdex. To also use it as the selected Codex Desktop avatar:
 
 ```text
 Codex Settings -> Appearance -> Pets -> Furhatling
 ```
 
-## About
+## Install From A Release Zip
 
-Furhatling is a custom pet package for Petdex and Codex Desktop. The pet is intentionally lightweight: one manifest, one spritesheet, and optional preview images for the repo. Everything reactive — agent integration, event routing, sprite playback — is handled by Petdex itself.
-
-## Demo States
-
-| Idle | Running | Waiting | Review | Failed |
-| --- | --- | --- | --- | --- |
-| ![Idle](previews/idle.gif) | ![Running](previews/running.gif) | ![Waiting](previews/waiting.gif) | ![Review](previews/review.gif) | ![Failed](previews/failed.gif) |
-
-Full contact sheet:
-
-![Furhatling contact sheet](docs/contact-sheet.png)
-
-## Tech
-
-- Petdex Desktop for the floating macOS pet window
-- Petdex CLI for install, startup, hooks, and diagnostics
-- Codex and Claude Code hooks for agent status events
-- Local Petdex sidecar on `127.0.0.1:7777`
-- WebView/CSS sprite rendering
-- A single animated `spritesheet.webp`
-- A small `pet.json` manifest
-
-Furhatling uses the Codex/Petdex pet atlas format: 8 columns by 9 rows.
-
-## Files
-
-```text
-pet.json
-spritesheet.webp
-previews/
-docs/contact-sheet.png
-LICENSE.md
-```
-
-Only these files are required at runtime:
-
-```text
-pet.json
-spritesheet.webp
-```
-
-## Requirements
-
-- macOS
-- Node.js / `npx`
-- Petdex
-- Optional: Codex and/or Claude Code with Petdex hooks installed
-
-Install Petdex:
+If you downloaded a release zip instead of cloning the repository:
 
 ```bash
-npx petdex@latest init
-```
+unzip furhatling-petdex-v0.1.0.zip
+cd furhatling-petdex
 
-Install or refresh hooks:
-
-```bash
-npx petdex@latest hooks install
-```
-
-## Install
-
-Clone this repo or download the release zip.
-
-From the repo folder:
-
-```bash
 mkdir -p "$HOME/.petdex/pets/furhatling" "$HOME/.codex/pets/furhatling"
-
 cp pet.json spritesheet.webp "$HOME/.petdex/pets/furhatling/"
 cp pet.json spritesheet.webp "$HOME/.codex/pets/furhatling/"
 ```
@@ -125,30 +91,6 @@ open "petdex://furhatling"
 
 You can also right-click the Petdex pet and select `furhatling` from the picker.
 
-If you also want Codex Desktop's selected avatar to match, open:
-
-```text
-Codex Settings -> Appearance -> Pets
-```
-
-Then choose `Furhatling`.
-
-## Swap Pets
-
-Use the Petdex URL scheme:
-
-```bash
-open "petdex://furhatling"
-open "petdex://boba"
-open "petdex://grogu-kid"
-```
-
-List locally installed pet slugs:
-
-```bash
-find "$HOME/.petdex/pets" "$HOME/.codex/pets" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort -u
-```
-
 ## Daily Commands
 
 ```bash
@@ -169,20 +111,9 @@ Inside Codex or Claude Code, if the `/petdex` slash command is installed:
 /petdex doctor
 ```
 
-## How It Works
-
-Petdex installs hooks into supported local agent configs. Those hooks send status changes to the local Petdex sidecar.
-
-Typical flow:
-
-1. A supported local tool changes state.
-2. A Petdex hook notifies the local sidecar.
-3. Petdex serves the current state.
-4. The floating pet changes animation and may show a short status bubble.
-
-Furhatling is only an ambient UI layer over local agent events. The pet itself does not contain agent logic.
-
 ## Animation States
+
+Furhatling uses the standard Codex/Petdex pet atlas format: 8 columns by 9 rows. Each cell is `192 x 208`, and the full spritesheet is `1536 x 1872`.
 
 - `idle`: calm blink / resting presence
 - `running-right`: directional movement
@@ -193,6 +124,24 @@ Furhatling is only an ambient UI layer over local agent events. The pet itself d
 - `waiting`: waiting for approval or user input
 - `running`: active work / tool execution
 - `review`: focused review or checking state
+
+## Files
+
+```text
+pet.json
+spritesheet.webp
+previews/
+docs/contact-sheet.png
+LICENSE.md
+CHANGELOG.md
+```
+
+Only these files are required at runtime:
+
+```text
+pet.json
+spritesheet.webp
+```
 
 ## Troubleshooting
 
@@ -222,7 +171,7 @@ pet.json
 spritesheet.webp
 ```
 
-If hooks do not work in Codex or Claude:
+If hooks do not work in Codex, Claude Code, Gemini CLI, or OpenCode:
 
 ```bash
 npx petdex@latest hooks install
@@ -231,16 +180,16 @@ npx petdex@latest doctor
 
 ## Roadmap
 
-Planned for upcoming releases:
+Planned improvements:
 
-- **Higher-resolution sprites** — current atlas is fixed at the Petdex/Codex default tile size; next pass renders the pet at 2× or 3× source resolution so it stays crisp on high-DPI displays at larger window sizes.
-- **Larger floating window** — a configurable scale factor (and a Petdex setting hook) so Furhatling can be sized up for visibility on big monitors or scaled down for tighter screen real estate.
-- **Swappable faces** — face variants (e.g. different projected expressions or skins) selectable per-session via the Petdex picker, without re-installing the pet package.
-
-These are not yet wired up — the current alpha ships with the fixed 192×208 sprite and the single face shown in the previews above.
+- **Smoother animation timing** - reduce abrupt head movement and add more eased motion between poses.
+- **Clearer projected face** - improve facial contrast and expression readability at pet size.
+- **Higher-resolution source art** - render future source frames at 2x or 3x before downsampling.
+- **Face variants** - explore alternate projected expressions, scale, and brightness. If Petdex adds layered or configurable face support, Furhatling can use that instead of shipping multiple full spritesheets.
+- **Windows and Linux usage** - Furhatling's assets should remain portable, but desktop use depends on Petdex Desktop support for those platforms.
 
 ## License And Credits
 
 See [LICENSE.md](LICENSE.md).
 
-Furhatling is an unofficial pet inspired by social robotics and the Furhat social robot from Furhat Robotics. It was made with rights-cleared visual references and is not intended to imply that Petdex, Codex, Claude Code, Furhat Robotics, or any other company endorses or maintains this project.
+Furhatling is an unofficial fan-made pet. It is not affiliated with, endorsed by, or maintained by Petdex, OpenAI, Anthropic, Google, OpenCode, Furhat Robotics, or any other company named in this repository. Product and company names are used only to describe compatibility, inspiration, or workflow context.
