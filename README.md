@@ -29,12 +29,11 @@ Visual experiments and side-by-side comparisons are documented in [docs/version-
 
 ## Requirements
 
-- macOS
 - Node.js / `npx`
 - Petdex Desktop
 - Optional: Codex Desktop, Codex CLI, Claude Code, Gemini CLI, or OpenCode with Petdex hooks installed
 
-The [Petdex download page](https://petdex.crafter.run/download) currently lists macOS as available, with Linux and Windows marked as coming soon. Furhatling's assets are platform-neutral, but the floating desktop pet experience depends on Petdex Desktop support for your operating system.
+Furhatling's assets are platform-neutral, but the floating desktop pet experience depends on Petdex Desktop support for your operating system. Check the [Petdex download page](https://petdex.crafter.run/download) for current platform availability.
 
 ## Quick Start
 
