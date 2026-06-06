@@ -4,7 +4,7 @@
 
 > **Status: alpha v0.1.0.** Furhatling is usable today as a fixed-size Petdex/Codex pet. The current release uses one fixed face, one fixed spritesheet, and the standard 9-state pet atlas.
 
-Furhatling is a tiny desktop companion pet for [Petdex](https://petdex.crafter.run/) and Codex Desktop. It is inspired by cozy tabletop social robots: a smooth white head, warm projected expression, short matte-grey neck, and curious little movements while your local coding agents work.
+Furhatling is a tiny desktop companion pet for [Petdex](https://petdex.dev/) and Codex Desktop. It is inspired by cozy tabletop social robots: a smooth white head, warm projected expression, short matte-grey neck, and curious little movements while your local coding agents work.
 
 The package is intentionally simple. Furhatling does not include agent logic, telemetry, network code, or a background service. It is just:
 
@@ -33,7 +33,7 @@ Visual experiments and side-by-side comparisons are documented in [docs/version-
 - Petdex Desktop
 - Optional: Codex Desktop, Codex CLI, Claude Code, Gemini CLI, or OpenCode with Petdex hooks installed
 
-Furhatling's assets are platform-neutral, but the floating desktop pet experience depends on Petdex Desktop support for your operating system. Check the [Petdex download page](https://petdex.crafter.run/download) for current platform availability.
+Furhatling's assets are platform-neutral, but the floating desktop pet experience depends on Petdex Desktop support for your operating system. Check the [Petdex download page](https://petdex.dev/download) for current platform availability.
 
 ## Quick Start
 
