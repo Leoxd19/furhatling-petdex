@@ -4,7 +4,7 @@
 
 > **Status: alpha v0.1.0.** Furhatling is usable today as a fixed-size Petdex/Codex pet. The current release uses one fixed face, one fixed spritesheet, and the standard 9-state pet atlas.
 
-Furhatling is a tiny desktop companion pet for [Petdex](https://petdex.dev/) and Codex Desktop. It is inspired by cozy tabletop social robots: a smooth white head, warm projected expression, short matte-grey neck, and curious little movements while your local coding agents work.
+Furhatling is a tiny desktop companion pet for [Petdex](https://petdex.dev/) and Codex Desktop. It is inspired by the [Furhat Robot](https://www.furhatrobotics.com/furhat-robot) from [Furhat Robotics](https://www.furhatrobotics.com/): a smooth white head, warm projected expression, short matte-grey neck, and curious little movements while your local coding agents work.
 
 This repository ships only the pet package. Furhatling does not include agent logic, telemetry, network code, or a background service. The runtime behavior comes from Petdex and Codex Desktop.
 
@@ -197,4 +197,4 @@ Planned improvements:
 
 See [LICENSE.md](LICENSE.md).
 
-Furhatling is an unofficial fan-made pet. It is not affiliated with, endorsed by, or maintained by Petdex, OpenAI, Anthropic, Google, OpenCode, Furhat Robotics, or any other company named in this repository. Product and company names are used only to describe compatibility, inspiration, or workflow context.
+Furhatling is an unofficial fan-made pet. It is not an official product of, endorsed by, or maintained by Petdex, OpenAI, Anthropic, Google, OpenCode, Furhat Robotics, or any other company named in this repository. Product and company names are used only to describe compatibility, inspiration, or workflow context.

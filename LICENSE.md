@@ -21,10 +21,10 @@ You may not:
 
 - sell the artwork or package
 - redistribute modified versions of the artwork without permission
-- use the artwork in a way that suggests endorsement by Petdex, OpenAI, Anthropic, Google, OpenCode, Furhat Robotics, or any other company
+- use the artwork in a way that suggests official endorsement by Petdex, OpenAI, Anthropic, Google, OpenCode, Furhat Robotics, or any other company
 
 For other uses, open an issue or contact the repository owner.
 
 ## Third Party Names
 
-Petdex, Codex, Claude Code, Gemini, OpenCode, Furhat, Furhat Robotics, and other product or company names are used only to describe compatibility, inspiration, or workflow context. This project is not an official product of those teams or companies.
+Petdex, Codex, Claude Code, Gemini, OpenCode, Furhat, Furhat Robotics, and other product or company names are used only to describe compatibility, inspiration, or workflow context. This project is not an official product of, endorsed by, or maintained by those teams or companies.

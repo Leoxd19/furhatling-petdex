@@ -20,7 +20,7 @@ Use this before making the repository public or linking it from a personal site.
 ## Legal And Credits
 
 - [x] Include a license for documentation and pet assets.
-- [x] State that Furhatling is unofficial and not endorsed by Petdex, OpenAI, Anthropic, Google, OpenCode, Furhat Robotics, or related companies.
+- [x] Mention Furhat Robotics as design inspiration with a public link while stating that Furhatling is not an official product, endorsement, or maintained package.
 - [x] Avoid bundling third-party proprietary assets.
 
 ## GitHub
@@ -29,4 +29,4 @@ Use this before making the repository public or linking it from a personal site.
 - [ ] Decide whether to keep the existing two-commit history or rewrite it before public release.
 - [ ] Create or refresh the `v0.1.0` GitHub release zip after the final public-ready docs are pushed.
 - [ ] Add repository topics such as `petdex`, `codex`, `desktop-pet`, `spritesheet`, and `furhatling`.
-- [ ] Update the repository description to: `A tiny social robot-inspired desktop pet for Petdex and Codex Desktop.`
+- [ ] Update the repository description to: `A tiny Furhat-inspired desktop pet for Petdex and Codex Desktop.`
