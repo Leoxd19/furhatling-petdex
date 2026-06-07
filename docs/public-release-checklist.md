@@ -20,7 +20,7 @@ Use this before making the repository public or linking it from a personal site.
 ## Legal And Credits
 
 - [x] Include a license for documentation and pet assets.
-- [x] Mention Furhat Robotics as design inspiration with a public link while stating that Furhatling is not an official product, endorsement, or maintained package.
+- [x] Mention Furhat/Furhat Robotics as design inspiration with a public link while stating that Furhatling is not an official release, endorsement, or maintained package.
 - [x] Avoid bundling third-party proprietary assets.
 
 ## GitHub
